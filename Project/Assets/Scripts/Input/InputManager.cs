@@ -1,15 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
-
-public class InputManager : Singleton<InputManager>
+public static class InputManager
 {
-    private PlayerInput input;
-    public PlayerInput Input => input;
-
-    private void Awake()
+    static InputManager()
     {
-        input = new();
-        input.Gameplay.Enable();
+        Input.Gameplay.Enable();
+    }
+
+    private static PlayerInput input;
+    public static PlayerInput Input
+    {
+        get
+        {
+            if (input == null)
+            {
+                input = new();
+            }
+            return input;
+        }
     }
 }

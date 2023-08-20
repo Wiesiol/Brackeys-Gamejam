@@ -10,20 +10,14 @@ public class ItemGathering : MonoBehaviour
 {
     [SerializeField] private Vector3 offset;
     [SerializeField] private float radius;
+    [SerializeField] private Transform sphereCenterPoint;
     private Vector3 offsetVector;
     private ForwardPoint sphereCenter;
 
     void Awake()
     {
-        sphereCenter = new ForwardPoint(transform);
+        sphereCenter = new ForwardPoint(sphereCenterPoint);
     }
-
-    void Start()
-    {
-        
-    }
-
-
 
     private float ClosestItem(Collider collider)
     {
@@ -33,22 +27,27 @@ public class ItemGathering : MonoBehaviour
         return ((cameraPosition - colliderPosition) - (Vector3.Dot(cameraPosition - colliderPosition, cameraDirection) * cameraDirection)).magnitude;
     }
 
-    void OnGismosDrawSelected()
+    private void OnDrawGizmosSelected()
     {
-        sphereCenter.DrawGizmos(radius);
+        //if (Application.isPlaying)
+        //{
+        //    sphereCenter.DrawGizmos(radius);
+        //}
+
+        Gizmos.DrawWireSphere(sphereCenterPoint.position, radius);
     }
 
     // Update is called once per frame
     void Update()
     {
         Dictionary<Collider, float> distances = new Dictionary<Collider, float>();
-        Collider[] hits = Physics.OverlapSphere(sphereCenter.GetPoint(offset), radius, LayerMask.NameToLayer("Gatherable"));
+        Collider[] hits = Physics.OverlapSphere(/*sphereCenter.GetPoint(offset)*/sphereCenterPoint.position, radius/*,*/ /*LayerMask.NameToLayer("Gatherable")*/);
         foreach (Collider hit in hits) {
             distances.Add(hit, ClosestItem(hit));
         }
         List<Collider> sortedColliders = distances.OrderBy(n => n.Value).Select(n => n.Key).ToList();
         foreach (Collider collider in sortedColliders) {
-            Physics.Raycast(transform.position, collider.transform.position, out var raycastHit);
+            Physics.Linecast(transform.position, collider.transform.position, out var raycastHit);
             if (raycastHit.collider == collider) {
                 Debug.Log(collider.name);
             }
