@@ -1,18 +1,25 @@
 ﻿using UnityEngine;
 
-public class ForwardPoint : MonoBehaviour
+public class ForwardPoint
 {
-    [SerializeField] private Vector3 offset;
     private Vector3 pointInFront;
+    private Transform transform;
 
-    private void Update()
+    public ForwardPoint(Transform transform)
     {
-        pointInFront = transform.position + (transform.forward * offset.z) + (transform.right * offset.x) + transform.up * offset.y;
-        Debug.Log(transform.forward);
+        this.transform = transform;
     }
 
-    private void OnDrawGizmosSelected()
+    public Vector3 GetPoint(Vector3 offset)
     {
-        Gizmos.DrawWireSphere(pointInFront, 2);
+        pointInFront = transform.position + (transform.forward * offset.z) + (transform.right * offset.x) + (transform.up * offset.y);
+        return pointInFront;
+    }
+
+
+
+    public void DrawGizmos(float radius)
+    {
+        Gizmos.DrawWireSphere(pointInFront, radius);
     }
 }
