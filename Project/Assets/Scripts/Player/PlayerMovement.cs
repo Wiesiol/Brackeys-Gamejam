@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float maxVelocity;
     [SerializeField] private float turnSmoothTime;
+    [SerializeField] private float ascendSpeed;
     private Vector2 movementDirection;
     private Vector2 movementInput;
     private float ascendInput;
@@ -52,20 +53,21 @@ public class PlayerMovement : MonoBehaviour
         //var velocity = rb.velocity;
         //velocity.y = Mathf.MoveTowards(velocity.y, ascendInput * speed, speed);
 
-        //rb.velocity = velocity;
-        ////rb.MovePosition(transform.position + velocity);
-
         var direction = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
 
+        Vector3 movedir = Vector3.zero;
         if (direction.magnitude >= 0.1f)
         {
             var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
             var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            var movedir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            rb.MovePosition(transform.position + movedir * speed * Time.fixedDeltaTime);
+            movedir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
+
+        movedir.y = ascendInput * ascendSpeed;
+
+        if (direction != Vector3.zero)
+            rb.MovePosition(transform.position + movedir * speed * Time.fixedDeltaTime);
 
         //var velocity = rb.velocity;
         //velocity.y = Mathf.MoveTowards(velocity.y, ascendInput * speed, speed);
