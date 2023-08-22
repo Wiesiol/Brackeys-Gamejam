@@ -10,13 +10,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSmoothTime;
     [SerializeField] private float ascendSpeed;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private AnimationCurve speedCurve;
+    [SerializeField] private AnimationCurve speedDownCurve;
+
     private Vector2 movementInput;
     private float ascendInput;
     private float turnSmoothVelocity;
+    private float accelerationTime;
+    private Vector3 prevMoveDir;
 
     private void Start()
     {
         rb.useGravity = false;
+
+        //TODO: zmieniæ to gówno
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -45,10 +54,26 @@ public class PlayerMovement : MonoBehaviour
 
         movedir.y = ascendInput * ascendSpeed;
 
+        if ((movementInput.x != 0 || movementInput.y != 0 || ascendInput != 0)&& accelerationTime < 1)
+        {
+            accelerationTime += Time.fixedDeltaTime;
+        }
+        else if (accelerationTime > 0f)
+        {
+            accelerationTime -= Time.fixedDeltaTime;
+            Debug.Log(accelerationTime);
+            prevMoveDir *= speedDownCurve.Evaluate(accelerationTime);
+            rb.MovePosition(transform.position + prevMoveDir * speed * Time.fixedDeltaTime);
+            return;
+        }
+
         if (movedir != Vector3.zero)
         {
+            movedir *= speedCurve.Evaluate(accelerationTime);
+            prevMoveDir = movedir;
             rb.MovePosition(transform.position + movedir * speed * Time.fixedDeltaTime);
         }
+
 
         LookForward();
     }
