@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.EventSystems;
+using System;
 
 public class ItemGathering : MonoBehaviour
 {
@@ -13,43 +14,31 @@ public class ItemGathering : MonoBehaviour
     [SerializeField] private Transform sphereCenterPoint;
     [SerializeField] private LayerMask ignorePlayer;
     [SerializeField] private LayerMask gatherable;
+    [SerializeField] private LineRenderer lineRenderer;
     private Vector3 offsetVector;
     private ForwardPoint sphereCenter;
+    private float distanceFromPlayer;
     private Dictionary<Collider, float> distances = new();
     private List<Collider> sortedColliders = new();
+    private Laser laser;
 
     void Awake()
     {
+        laser = new Laser(lineRenderer);
         sphereCenter = new ForwardPoint(sphereCenterPoint);
-    }
-
-    private float ClosestItem(Collider collider)
-    {
-        Vector3 cameraPosition = Camera.main.transform.position;
-        Vector3 cameraDirection = StaticCameraUtils.GetCameraForward();
-        Vector3 colliderPosition = collider.transform.position;
-        return ((cameraPosition - colliderPosition) - (Vector3.Dot(cameraPosition - colliderPosition, cameraDirection) * cameraDirection)).magnitude;
+        distanceFromPlayer = Vector3.Distance(transform.position, sphereCenterPoint.position);
     }
 
     private void OnDrawGizmosSelected()
     {
-        //if (Application.isPlaying)
-        //{
-        //    sphereCenter.DrawGizmos(radius);
-        //}
-
         Gizmos.DrawWireSphere(sphereCenterPoint.position, radius);
     }
 
-    // Update is called once per frame
     void Update()
     {
         distances.Clear();
 
-        Collider[] hits = Physics.OverlapSphere(/*sphereCenter.GetPoint(offset)*/sphereCenterPoint.position, radius, gatherable);
-        //foreach (Collider hit in hits) {
-        //    distances.Add(hit, ClosestItem(hit));
-        //}
+        Collider[] hits = Physics.OverlapSphere(sphereCenterPoint.position, radius, gatherable);
 
         foreach (var col in hits)
         {
@@ -76,7 +65,13 @@ public class ItemGathering : MonoBehaviour
             Physics.Linecast(transform.position, collider.transform.position, out var raycastHit, ignorePlayer);
             if (raycastHit.collider == collider)
             {
-                Debug.Log(collider.name);
+                if (InputManager.Input.Gameplay.Gather.IsPressed())
+                {
+                    laser.DrawLaser(collider);
+                } else
+                {
+                    laser.HideLaser();
+                }
                 return;
             }
         }

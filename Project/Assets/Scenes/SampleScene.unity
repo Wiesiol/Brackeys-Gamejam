@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33135393, y: -0.5601935, z: 0.2602684, w: 0.7131958}
+  m_LocalRotation: {x: 0.33135393, y: -0.56019354, z: 0.26026842, w: 0.71319574}
   m_LocalPosition: {x: 1.9430745, y: 3.5, z: -0.4737743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382061275}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33135393, y: -0.5601935, z: 0.2602684, w: 0.7131958}
+  m_LocalRotation: {x: 0.33135393, y: -0.56019354, z: 0.26026842, w: 0.71319574}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -990,7 +990,7 @@ MonoBehaviour:
   speed: 5
   maxVelocity: 5
   turnSmoothTime: 0.1
-  ascendSpeed: 0
+  ascendSpeed: 1
 --- !u!114 &629099182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,14 +1004,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  radius: 1.15
-  sphereCenterPoint: {fileID: 1475144347}
+  radius: 2.27
+  sphereCenterPoint: {fileID: 629099180}
   ignorePlayer:
     serializedVersion: 2
     m_Bits: 119
   gatherable:
     serializedVersion: 2
     m_Bits: 64
+  lineRenderer: {fileID: 710288222}
 --- !u!1 &659083538
 GameObject:
   m_ObjectHideFlags: 3
@@ -1149,7 +1150,6 @@ GameObject:
   m_Component:
   - component: {fileID: 710288220}
   - component: {fileID: 710288222}
-  - component: {fileID: 710288221}
   m_Layer: 7
   m_Name: LaserPoint
   m_TagString: Untagged
@@ -1172,18 +1172,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 472456338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &710288221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710288219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae94b0118c2109042b1283d4c1cce29a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!120 &710288222
 LineRenderer:
   serializedVersion: 2
@@ -1192,7 +1180,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710288219}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1579,7 +1567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272660272}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33135393, y: -0.5601935, z: 0.2602684, w: 0.7131958}
+  m_LocalRotation: {x: 0.33135393, y: -0.56019354, z: 0.26026842, w: 0.71319574}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2341,8 +2329,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065890224}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30522844, y: -0.569278, z: 0.23974761, w: 0.72476155}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.30522844, y: -0.5692781, z: 0.23974766, w: 0.7247615}
+  m_LocalPosition: {x: -0.00000011920929, y: 0, z: -0.000000029802322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

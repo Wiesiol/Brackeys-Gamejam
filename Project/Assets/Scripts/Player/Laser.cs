@@ -1,25 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Laser : MonoBehaviour
+public class Laser
 {
     private LineRenderer lineRenderer;
-    private Transform[] points;
+    private readonly Transform transform;
 
-    private void DrawLaser()
+    public Laser(LineRenderer lineRenderer)
     {
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        this.lineRenderer = lineRenderer;
+        this.lineRenderer.positionCount = 2;
+        this.transform = lineRenderer.transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DrawLaser(Collider collider)
     {
-        
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, collider.transform.position);
+        lineRenderer.enabled = true;
+    }
+
+    public void HideLaser()
+    {
+        lineRenderer.enabled = false;
     }
 }
