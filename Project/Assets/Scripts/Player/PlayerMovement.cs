@@ -7,13 +7,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
-    [SerializeField] private float maxVelocity;
     [SerializeField] private float turnSmoothTime;
     [SerializeField] private float ascendSpeed;
-    private Vector2 movementDirection;
+    [SerializeField] private float maxSpeed;
     private Vector2 movementInput;
     private float ascendInput;
-    private Vector3 forceDirection;
     private float turnSmoothVelocity;
 
     private void Start()
@@ -34,25 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //forceDirection += movementInput.x * StaticCameraUtils.GetCameraRight() * speed;
-        //forceDirection += movementInput.y * StaticCameraUtils.GetCameraForward() * speed;
-
-        //Debug.Log(forceDirection);
-
-        ////rb.AddForce(forceDirection, ForceMode.Impulse);
-
-
-        //rb.velocity = Vector3.MoveTowards(rb.velocity, forceDirection, speed) * Time.fixedDeltaTime;
-        //var horizontalVelocity = rb.velocity;
-        //horizontalVelocity.y = 0;
-        //if (rb.velocity.sqrMagnitude > maxVelocity * maxVelocity)
-        //{
-        //    rb.velocity = horizontalVelocity.normalized * maxVelocity + Vector3.up * rb.velocity.y;
-        //}
-
-        //var velocity = rb.velocity;
-        //velocity.y = Mathf.MoveTowards(velocity.y, ascendInput * speed, speed);
-
         var direction = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
 
         Vector3 movedir = Vector3.zero;
@@ -66,14 +45,10 @@ public class PlayerMovement : MonoBehaviour
 
         movedir.y = ascendInput * ascendSpeed;
 
-        if (direction != Vector3.zero)
+        if (movedir != Vector3.zero)
+        {
             rb.MovePosition(transform.position + movedir * speed * Time.fixedDeltaTime);
-
-        //var velocity = rb.velocity;
-        //velocity.y = Mathf.MoveTowards(velocity.y, ascendInput * speed, speed);
-
-        //rb.velocity = velocity;
-        ////rb.MovePosition(transform.position + velocity);
+        }
 
         LookForward();
     }
@@ -91,29 +66,5 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.angularVelocity = Vector3.zero;
         }
-    }
-}
-
-public static class StaticCameraUtils
-{
-    private static Transform cameraTransform;
-
-    static StaticCameraUtils()
-    {
-        cameraTransform = Camera.main.transform;
-    }
-
-    public static Vector3 GetCameraForward()
-    {
-        var forward = cameraTransform.forward;
-        forward.y = 0;
-        return forward.normalized;
-    }
-
-    public static Vector3 GetCameraRight()
-    {
-        var right = cameraTransform.right;
-        right.y = 0;
-        return right.normalized;
     }
 }
