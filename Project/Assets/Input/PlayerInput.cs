@@ -62,6 +62,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""54ea098e-4f83-4776-8a3c-7a67c9039fc0"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5608266d-0712-4bba-b0c5-be32d41c952f"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0f211125-4170-473e-ab74-03730587df12"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=0.2,y=0.2)"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -225,6 +256,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Gameplay_AscendDescend = m_Gameplay.FindAction("Ascend/Descend", throwIfNotFound: true);
         m_Gameplay_Gather = m_Gameplay.FindAction("Gather", throwIfNotFound: true);
         m_Gameplay_OpenInventory = m_Gameplay.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_CloseInventory = m_Inventory.FindAction("CloseInventory", throwIfNotFound: true);
@@ -293,6 +325,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_AscendDescend;
     private readonly InputAction m_Gameplay_Gather;
     private readonly InputAction m_Gameplay_OpenInventory;
+    private readonly InputAction m_Gameplay_Look;
     public struct GameplayActions
     {
         private @PlayerInput m_Wrapper;
@@ -301,6 +334,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @AscendDescend => m_Wrapper.m_Gameplay_AscendDescend;
         public InputAction @Gather => m_Wrapper.m_Gameplay_Gather;
         public InputAction @OpenInventory => m_Wrapper.m_Gameplay_OpenInventory;
+        public InputAction @Look => m_Wrapper.m_Gameplay_Look;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -322,6 +356,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @OpenInventory.started += instance.OnOpenInventory;
             @OpenInventory.performed += instance.OnOpenInventory;
             @OpenInventory.canceled += instance.OnOpenInventory;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -338,6 +375,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @OpenInventory.started -= instance.OnOpenInventory;
             @OpenInventory.performed -= instance.OnOpenInventory;
             @OpenInventory.canceled -= instance.OnOpenInventory;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -407,6 +447,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnAscendDescend(InputAction.CallbackContext context);
         void OnGather(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface IInventoryActions
     {

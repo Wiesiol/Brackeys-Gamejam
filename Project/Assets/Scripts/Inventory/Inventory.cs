@@ -13,6 +13,7 @@ namespace Inventory
         //[SerializeField] private List<InventoryItem> items;
         [SerializeField] private Transform dropTransform;
         [SerializeField] private List<InventorySlot> inventorySlots = new();
+        [SerializeField] private InventoryItem itemToAddInEditor;
         public GameObject inventoryHolder;
 
         public static UnityEvent<InventoryItem> OnItemAdded = new();
@@ -44,9 +45,15 @@ namespace Inventory
             inventoryHolder.SetActive(false);
         }
 
+        [ContextMenu("Add Item")]
+        public void AddItem()
+        {
+            AddItem(itemToAddInEditor);
+        }
+
         private void AddItem(InventoryItem item)
         {
-            var freeSlot = inventorySlots.FirstOrDefault(x => x.CanPutItemInside && x.gameObject.activeSelf);
+            var freeSlot = inventorySlots.FirstOrDefault(x => x.CanPutItemInside && x.gameObject.activeInHierarchy);
 
             if (freeSlot != null)
             {
@@ -64,30 +71,6 @@ namespace Inventory
             for (int i = 0; i < slots; i++)
             {
                 inventorySlots[i].gameObject.SetActive(true);
-            }
-        }
-    }
-
-    public class InventoryItem : ScriptableObject
-    {
-        [SerializeField] private ItemInstance itemInstance;
-        [field: SerializeField] public Sprite ItemSprite { get; private set; }
-
-        public void SpawnItem(Vector3 position)
-        {
-            Instantiate(itemInstance, position, Quaternion.identity);
-        }
-    }
-
-    public class ItemInstance : MonoBehaviour
-    {
-        [SerializeField] private InventoryItem item;
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                Inventory.OnItemAdded.Invoke(item);
             }
         }
     }

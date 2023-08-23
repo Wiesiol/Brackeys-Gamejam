@@ -33,7 +33,7 @@ namespace Inventory
         public void PutItem(InventoryItem item)
         {
             inventoryItem = item;
-            ItemImage.enabled = true;
+            ItemImage.gameObject.SetActive(true);
             ItemImage.sprite = item.ItemSprite;
         }
     }

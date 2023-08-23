@@ -4,13 +4,13 @@ public static class CursorStates
 {
     private static void ShowCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
 
     private static void HideCursor()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 

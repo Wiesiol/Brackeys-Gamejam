@@ -22,18 +22,19 @@ public static class InputManager
     public static void ChangeActionMap(ActionMaps actionMap)
     {
         Input.Disable();
+        CursorStates.AdjustCursor(actionMap);
 
         switch (actionMap)
         {
             case ActionMaps.Gameplay:
                 input.Gameplay.Enable();
+                StaticCameraUtils.SetPlayerCameraActive(true);
                 break;
             case ActionMaps.Inventory:
                 input.Inventory.Enable();
+                StaticCameraUtils.SetPlayerCameraActive(false);
                 break;
         }
-
-        CursorStates.AdjustCursor(actionMap);
     }
 }
 

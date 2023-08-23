@@ -210,8 +210,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33135393, y: -0.56019354, z: 0.26026842, w: 0.71319574}
-  m_LocalPosition: {x: 1.9430745, y: 3.5, z: -0.4737743}
+  m_LocalRotation: {x: 0.42134914, y: 0.000000027027685, z: -0.000000012557184, w: 0.90689856}
+  m_LocalPosition: {x: 0, y: 3.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382061275}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33135393, y: -0.56019354, z: 0.26026842, w: 0.71319574}
+  m_LocalRotation: {x: 0.42134914, y: 1.1148309e-15, z: 5.5884783e-16, w: 0.9068985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -684,9 +684,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
+  m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 3.5, z: -2}
-  m_XDamping: 1
+  m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
@@ -817,9 +817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
+  m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 3.5, z: -2}
-  m_XDamping: 1
+  m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
@@ -931,6 +931,7 @@ GameObject:
   - component: {fileID: 902665409}
   - component: {fileID: 902665408}
   - component: {fileID: 902665410}
+  - component: {fileID: 902665411}
   m_Layer: 0
   m_Name: TPPCamera
   m_TagString: Untagged
@@ -1029,7 +1030,7 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 5
+  m_BindingMode: 4
   m_SplineCurvature: 1
   m_Orbits:
   - m_Height: 3.5
@@ -1052,7 +1053,7 @@ Transform:
   m_GameObject: {fileID: 902665407}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9430745, y: 3.5, z: -0.4737743}
+  m_LocalPosition: {x: 0, y: 3.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1091,6 +1092,22 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
+--- !u!114 &902665411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902665407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+  XYAxis: {fileID: 6079212801386338456, guid: 1ae0c6d5246d1a446a465809aea22bdd, type: 3}
+  ZAxis: {fileID: 0}
 --- !u!1 &921026543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272660272}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33135393, y: -0.56019354, z: 0.26026842, w: 0.71319574}
+  m_LocalRotation: {x: 0.42134914, y: 0.000000027027685, z: -0.000000012557184, w: 0.90689856}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1311,9 +1328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 5
+  m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 3.5, z: -2}
-  m_XDamping: 1
+  m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
@@ -2017,7 +2034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065890224}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30522844, y: -0.5692781, z: 0.23974766, w: 0.7247615}
+  m_LocalRotation: {x: 0.388128, y: -0.00000001472051, z: 0.000000006199445, w: 0.92160547}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2133,6 +2150,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1755168917714045790, guid: 1a8964fb9a31715409d95ded6335d5dd,
+        type: 3}
+      propertyPath: itemToAddInEditor
+      value: 
+      objectReference: {fileID: 11400000, guid: 26e7c94875c07814eb1cf4f2f0960e57,
+        type: 2}
     - target: {fileID: 4945422756769413080, guid: 1a8964fb9a31715409d95ded6335d5dd,
         type: 3}
       propertyPath: m_Name

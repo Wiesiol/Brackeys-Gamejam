@@ -59,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
         else if (accelerationTime > 0f)
         {
             accelerationTime -= Time.fixedDeltaTime;
-            Debug.Log(accelerationTime);
             prevMoveDir *= speedDownCurve.Evaluate(accelerationTime);
             rb.MovePosition(transform.position + prevMoveDir * speed * Time.fixedDeltaTime);
             return;
