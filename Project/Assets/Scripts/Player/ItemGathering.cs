@@ -77,5 +77,6 @@ public class ItemGathering : MonoBehaviour
                 return;
             }
         }
+        laser.HideLaser();
     }
 }
