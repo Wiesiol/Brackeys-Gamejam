@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,27 +11,40 @@ namespace Inventory
     public class Inventory : MonoBehaviour
     {
         [SerializeField] private int slots;
-        [SerializeField] private List<InventoryItem> items;
+        //[SerializeField] private List<InventoryItem> items;
         [SerializeField] private Transform dropTransform;
         [SerializeField] private GameObject slotPrefab;
+        private List<InventorySlot> inventorySlots = new();
 
         public static UnityEvent<InventoryItem> OnItemAdded = new();
         public static UnityEvent<int> OnSlotCleared = new();
 
         private void RemoveItem(int index)
         {
-            if (items[index] != null)
-            {
-                items[index].SpawnItem(dropTransform.position);
-                items.Remove(items[index]);
-            }
+            //if (items[index] != null)
+            //{
+            //    items[index].SpawnItem(dropTransform.position);
+            //    items.Remove(items[index]);
+            //}
         }
 
         private void AddItem(InventoryItem item)
         {
-            if(items.Count < slots)
+            //if(items.Count < slots)
+            //{
+            //    items.Add(item);
+            //}
+
+            var freeSlot = inventorySlots.FirstOrDefault(x => x.CanPutItemInside);
+
+            if (freeSlot != null)
             {
-                items.Add(item);
+                freeSlot.PutItem(item);
+            }
+
+            else
+            {
+                Debug.Log("Inventory Full");
             }
         }
     }
@@ -64,6 +78,7 @@ namespace Inventory
         [SerializeField] private Image ItemImage;
         [SerializeField] private Button button;
         [SerializeField] private InventoryItem inventoryItem;
+        public bool CanPutItemInside => inventoryItem == null;
 
         private void OnEnable()
         {
