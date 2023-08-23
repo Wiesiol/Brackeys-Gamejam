@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Inventory
 {
@@ -13,29 +12,41 @@ namespace Inventory
         [SerializeField] private int slots;
         //[SerializeField] private List<InventoryItem> items;
         [SerializeField] private Transform dropTransform;
-        [SerializeField] private GameObject slotPrefab;
-        private List<InventorySlot> inventorySlots = new();
+        [SerializeField] private List<InventorySlot> inventorySlots = new();
+        public GameObject inventoryHolder;
 
         public static UnityEvent<InventoryItem> OnItemAdded = new();
         public static UnityEvent<int> OnSlotCleared = new();
 
-        private void RemoveItem(int index)
+
+        private void OnEnable()
         {
-            //if (items[index] != null)
-            //{
-            //    items[index].SpawnItem(dropTransform.position);
-            //    items.Remove(items[index]);
-            //}
+            InputManager.Input.Inventory.CloseInventory.performed += CloseInventory;
+            InputManager.Input.Gameplay.OpenInventory.performed += OpenInventory;
+        }
+
+        private void OnDisable()
+        {
+            InputManager.Input.Inventory.CloseInventory.performed -= CloseInventory;
+            InputManager.Input.Gameplay.OpenInventory.performed -= OpenInventory;
+        }
+
+        private void OpenInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            InputManager.ChangeActionMap(ActionMaps.Inventory);
+            inventoryHolder.SetActive(true);
+            ShowPropperSlotsCount();
+        }
+
+        private void CloseInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            InputManager.ChangeActionMap(ActionMaps.Gameplay);
+            inventoryHolder.SetActive(false);
         }
 
         private void AddItem(InventoryItem item)
         {
-            //if(items.Count < slots)
-            //{
-            //    items.Add(item);
-            //}
-
-            var freeSlot = inventorySlots.FirstOrDefault(x => x.CanPutItemInside);
+            var freeSlot = inventorySlots.FirstOrDefault(x => x.CanPutItemInside && x.gameObject.activeSelf);
 
             if (freeSlot != null)
             {
@@ -47,12 +58,20 @@ namespace Inventory
                 Debug.Log("Inventory Full");
             }
         }
+
+        public void ShowPropperSlotsCount()
+        {
+            for (int i = 0; i < slots; i++)
+            {
+                inventorySlots[i].gameObject.SetActive(true);
+            }
+        }
     }
 
     public class InventoryItem : ScriptableObject
     {
         [SerializeField] private ItemInstance itemInstance;
-        [SerializeField] private Sprite ItemSprite;
+        [field: SerializeField] public Sprite ItemSprite { get; private set; }
 
         public void SpawnItem(Vector3 position)
         {
@@ -70,38 +89,6 @@ namespace Inventory
             {
                 Inventory.OnItemAdded.Invoke(item);
             }
-        }
-    }
-
-    public class InventorySlot : MonoBehaviour
-    {
-        [SerializeField] private Image ItemImage;
-        [SerializeField] private Button button;
-        [SerializeField] private InventoryItem inventoryItem;
-        public bool CanPutItemInside => inventoryItem == null;
-
-        private void OnEnable()
-        {
-            button.onClick.AddListener(DropItem);
-        }
-
-        private void OnDisable()
-        {
-            button.onClick.RemoveListener(DropItem);
-        }
-
-        private void DropItem()
-        {
-            if (inventoryItem != null)
-            {
-                Inventory.OnSlotCleared.Invoke(transform.GetSiblingIndex());
-                inventoryItem = null;
-            }
-        }
-
-        public void PutItem(InventoryItem item)
-        {
-            inventoryItem = item;
         }
     }
 }

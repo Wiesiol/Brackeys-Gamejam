@@ -24,8 +24,6 @@ public class PlayerMovement : MonoBehaviour
         rb.useGravity = false;
 
         //TODO: zmieniæ to gówno
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void Update()
