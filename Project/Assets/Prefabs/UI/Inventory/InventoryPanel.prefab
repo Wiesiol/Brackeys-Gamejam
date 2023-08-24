@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2091226495114369327}
   - component: {fileID: 8317498377004708140}
   m_Layer: 5
-  m_Name: InventoryPnel
+  m_Name: InventoryPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   - {fileID: 635041829450376177}
   - {fileID: 7499062551274308815}
   - {fileID: 6293119610198407701}
+  itemToAddInEditor: {fileID: 0}
   inventoryHolder: {fileID: 7652058213297987952}
 --- !u!1 &7652058213297987952
 GameObject:

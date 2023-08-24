@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb.useGravity = false;
-
-        //TODO: zmieniæ to gówno
     }
 
     void Update()
@@ -55,12 +53,15 @@ public class PlayerMovement : MonoBehaviour
         if ((movementInput.x != 0 || movementInput.y != 0 || ascendInput != 0)&& accelerationTime < 1)
         {
             accelerationTime += Time.fixedDeltaTime;
+            Debug.Log("Accelerate");
         }
         else if (accelerationTime > 0f)
         {
+            Debug.Log("Decelerate");
             accelerationTime -= Time.fixedDeltaTime;
             prevMoveDir *= speedDownCurve.Evaluate(accelerationTime);
-            rb.MovePosition(transform.position + prevMoveDir * speed * Time.fixedDeltaTime);
+            //rb.MovePosition(transform.position + prevMoveDir * speed * Time.fixedDeltaTime);
+            rb.velocity = (/*transform.position + */prevMoveDir * speed * Time.fixedDeltaTime);
             return;
         }
 
@@ -68,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
         {
             movedir *= speedCurve.Evaluate(accelerationTime);
             prevMoveDir = movedir;
-            rb.MovePosition(transform.position + movedir * speed * Time.fixedDeltaTime);
+            //rb.MovePosition(transform.position + movedir * speed * Time.fixedDeltaTime);
+            rb.velocity = (/*transform.position +*/ movedir * speed * Time.fixedDeltaTime);
         }
 
 

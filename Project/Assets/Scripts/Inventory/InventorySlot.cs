@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Gameplay;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Inventory
@@ -24,7 +25,16 @@ namespace Inventory
         {
             if (inventoryItem != null)
             {
-                Inventory.OnSlotCleared.Invoke(inventoryItem);
+                if (GameSystems.gamestate == GameState.Shop)
+                {
+                    inventoryItem.Sell();
+                }
+
+                else if (GameSystems.gamestate == GameState.Gameplay)
+                {
+                    Inventory.OnSlotCleared.Invoke(inventoryItem);
+                }
+
                 inventoryItem = null;
                 ItemImage.gameObject.SetActive(false);
             }

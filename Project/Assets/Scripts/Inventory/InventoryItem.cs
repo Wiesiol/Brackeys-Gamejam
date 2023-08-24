@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Inventory
 {
@@ -7,10 +8,16 @@ namespace Inventory
     {
         [SerializeField] public ItemInstance itemInstance;
         [field: SerializeField] public Sprite ItemSprite { get; private set; }
+        [field: SerializeField] public int Price { get; private set; }
 
         public void SpawnItem(Vector3 position)
         {
             Instantiate(itemInstance, position, Quaternion.identity);
+        }
+
+        internal void Sell()
+        {
+            PlayerStats.money += Price;
         }
     }
 }
