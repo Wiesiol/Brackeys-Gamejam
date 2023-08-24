@@ -21,6 +21,7 @@ public class ItemGathering : MonoBehaviour
     private Dictionary<Collider, float> distances = new();
     private List<Collider> sortedColliders = new();
     private Laser laser;
+    private Collider selectedCollider;
 
     void Awake()
     {
@@ -40,45 +41,58 @@ public class ItemGathering : MonoBehaviour
 
         Collider[] hits = Physics.OverlapSphere(sphereCenterPoint.position, radius, gatherable);
 
-        foreach (var col in hits)
+        if (selectedCollider == null || !hits.Contains(selectedCollider))
         {
-            var pointInScreen = Camera.main.WorldToViewportPoint(col.transform.position);
 
-            if (pointInScreen.x < 0 || 
-                pointInScreen.y < 0 || 
-                pointInScreen.x > 1 || 
-                pointInScreen.y > 1)
+            foreach (var col in hits)
             {
-                continue;
-            }
+                var pointInScreen = Camera.main.WorldToViewportPoint(col.transform.position);
 
-
-            var camCenter = new Vector2(0.5f, 0.5f);
-
-            var distance = Vector2.Distance(camCenter, (Vector2)pointInScreen);
-            distances.Add(col, distance);
-        }
-        sortedColliders = distances.OrderBy(n => n.Value).Select(n => n.Key).ToList();
-
-        foreach (Collider collider in sortedColliders)
-        {
-            Physics.Linecast(transform.position, collider.transform.position, out var raycastHit, ignorePlayer);
-            if (raycastHit.collider == collider)
-            {
-                if (InputManager.Input.Gameplay.Gather.IsPressed())
+                if (pointInScreen.x < 0 ||
+                    pointInScreen.y < 0 ||
+                    pointInScreen.x > 1 ||
+                    pointInScreen.y > 1)
                 {
-                    collider.GetComponent<IGatherable>().Gather();
-
-                    laser.DrawLaser(collider);
-                } 
-                
-                else
-                {
-                    laser.HideLaser();
+                    continue;
                 }
-                return;
+
+
+                var camCenter = new Vector2(0.5f, 0.5f);
+
+                var distance = Vector2.Distance(camCenter, (Vector2)pointInScreen);
+                distances.Add(col, distance);
             }
+            sortedColliders = distances.OrderBy(n => n.Value).Select(n => n.Key).ToList();
+
+            foreach (Collider collider in sortedColliders)
+            {
+                Physics.Linecast(transform.position, collider.transform.position, out var raycastHit, ignorePlayer);
+                if (raycastHit.collider == collider)
+                {
+                    ShootAndGather(collider);
+                    return;
+                }
+            }
+            laser.HideLaser();
         }
-        laser.HideLaser();
+        else
+        {
+            ShootAndGather(selectedCollider);
+        }
+    }
+
+    private void ShootAndGather(Collider collider)
+    {
+        if (InputManager.Input.Gameplay.Gather.IsPressed())
+        {
+            selectedCollider = collider;
+            laser.DrawLaser(collider);
+            collider.GetComponent<IGatherable>().Gather();
+        }
+        else
+        {
+            selectedCollider = null;
+            laser.HideLaser();
+        }
     }
 }
