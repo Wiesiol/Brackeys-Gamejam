@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace Inventory
 {
-    public class Inventory : MonoBehaviour
+    public class PlayerInventory : MonoBehaviour
     {
         [SerializeField] private int slots;
         //[SerializeField] private List<InventoryItem> items;
@@ -81,6 +81,14 @@ namespace Inventory
             {
                 inventorySlots[i].gameObject.SetActive(true);
             }
+        }
+
+        [ContextMenu("xD")]
+        public bool IsInventoryFull()
+        {
+            var freeSlots = inventorySlots.Where(x => x.CanPutItemInside && x.transform.GetSiblingIndex() < slots).Count();
+            Debug.Log(freeSlots);
+            return freeSlots == 0;
         }
     }
 }

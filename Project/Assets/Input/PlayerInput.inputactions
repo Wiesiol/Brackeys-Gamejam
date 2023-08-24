@@ -141,6 +141,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Alternative",
+                    "id": "dae55b3f-ba82-4276-a2a6-9c5038482653",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ascend/Descend",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "875f380d-d62b-48ce-ba1b-550d58e736d6",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ascend/Descend",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c243e49a-28ea-4dba-9f3d-c0eb1acf230f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ascend/Descend",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "09cfc89c-d220-45e4-9039-ea2a3241b794",
                     "path": "<Mouse>/leftButton",

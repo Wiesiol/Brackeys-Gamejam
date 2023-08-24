@@ -32,7 +32,7 @@ namespace Inventory
 
                 else if (GameSystems.gamestate == GameState.Gameplay)
                 {
-                    Inventory.OnSlotCleared.Invoke(inventoryItem);
+                    PlayerInventory.OnSlotCleared.Invoke(inventoryItem);
                 }
 
                 inventoryItem = null;

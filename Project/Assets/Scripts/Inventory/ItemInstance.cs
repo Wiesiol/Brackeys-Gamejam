@@ -13,9 +13,14 @@ namespace Inventory
             float distance = Vector3.Distance(PlayerSystems.PlayerTransform.position, transform.position);
             if (distance < minDistance)
             {
-                Inventory.OnItemAdded.Invoke(item);
-                Destroy(gameObject);
-            } else
+                if (!PlayerSystems.PlayerInventory.IsInventoryFull())
+                {
+                    PlayerInventory.OnItemAdded.Invoke(item);
+                    Destroy(gameObject);
+                }
+            } 
+
+            else
             {
                 Vector3 directionToTarget = PlayerSystems.GatherTransform.position - transform.position;
                 Vector3 directionToTargetNormalized = directionToTarget.normalized;

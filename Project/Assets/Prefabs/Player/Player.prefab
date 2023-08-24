@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2105731494909401754}
   - component: {fileID: 4985462910749391239}
   - component: {fileID: 4110493090543457153}
+  - component: {fileID: 4591057624868913793}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2105731494909401754}
-  speed: 300
+  speed: 150
   turnSmoothTime: 0.1
   ascendSpeed: 1
   maxSpeed: 0
@@ -167,15 +168,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
-  radius: 0.91
+  radius: 1.2
   sphereCenterPoint: {fileID: 7600322032287421922}
   ignorePlayer:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 375
   gatherable:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   lineRenderer: {fileID: 4165054575786746959}
+--- !u!114 &4591057624868913793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781191228112152879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9baf247d4e92cce4080d8b814e98b901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gatherTransform: {fileID: 1300593952261381280}
+  playerInventory: {fileID: 0}
 --- !u!1 &3670522003126829462
 GameObject:
   m_ObjectHideFlags: 0
