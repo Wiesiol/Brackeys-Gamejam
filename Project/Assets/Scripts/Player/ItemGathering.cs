@@ -67,10 +67,12 @@ public class ItemGathering : MonoBehaviour
             {
                 if (InputManager.Input.Gameplay.Gather.IsPressed())
                 {
-                    collider.GetComponent<GatherableItem>().DestroyItem();
+                    collider.GetComponent<IGatherable>().Gather();
 
                     laser.DrawLaser(collider);
-                } else
+                } 
+                
+                else
                 {
                     laser.HideLaser();
                 }

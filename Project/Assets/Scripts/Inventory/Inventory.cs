@@ -24,6 +24,7 @@ namespace Inventory
         {
             InputManager.Input.Inventory.CloseInventory.performed += CloseInventory;
             InputManager.Input.Gameplay.OpenInventory.performed += OpenInventory;
+            OnItemAdded.AddListener(AddItem);
             OnSlotCleared.AddListener(SpawnItem);
         }
 
@@ -31,6 +32,7 @@ namespace Inventory
         {
             InputManager.Input.Inventory.CloseInventory.performed -= CloseInventory;
             InputManager.Input.Gameplay.OpenInventory.performed -= OpenInventory;
+            OnItemAdded.RemoveListener(AddItem);
             OnSlotCleared.RemoveListener(SpawnItem);
         }
 

@@ -1,31 +1,24 @@
+using Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GatherableItem : MonoBehaviour
+public class GatherableItem : MonoBehaviour, IGatherable
 {
     [SerializeField] private float timeToGather;
+    [SerializeField] private InventoryItem drop;
 
-    public void DestroyItem()
+    public void Gather()
     {
         if (timeToGather > 0)
         {
             timeToGather -= Time.deltaTime;
-        } else
+        } 
+        
+        else
         {
+            drop.SpawnItem(transform.position);
             Destroy(gameObject);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
