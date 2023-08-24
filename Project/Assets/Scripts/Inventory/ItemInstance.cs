@@ -6,12 +6,12 @@ namespace Inventory
     {
         [SerializeField] private InventoryItem item;
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                Inventory.OnItemAdded.Invoke(item);
-            }
-        }
+        //private void OnCollisionEnter(Collision collision)
+        //{
+        //    if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        //    {
+        //        Inventory.OnItemAdded.Invoke(item);
+        //    }
+        //}
     }
 }

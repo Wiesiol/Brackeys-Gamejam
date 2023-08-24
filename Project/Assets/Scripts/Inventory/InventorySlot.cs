@@ -24,9 +24,9 @@ namespace Inventory
         {
             if (inventoryItem != null)
             {
-                Inventory.OnSlotCleared.Invoke(transform.GetSiblingIndex());
+                Inventory.OnSlotCleared.Invoke(inventoryItem);
                 inventoryItem = null;
-                ItemImage.enabled = false;
+                ItemImage.gameObject.SetActive(false);
             }
         }
 

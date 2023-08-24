@@ -17,19 +17,26 @@ namespace Inventory
         public GameObject inventoryHolder;
 
         public static UnityEvent<InventoryItem> OnItemAdded = new();
-        public static UnityEvent<int> OnSlotCleared = new();
+        public static UnityEvent<InventoryItem> OnSlotCleared = new();
 
 
         private void OnEnable()
         {
             InputManager.Input.Inventory.CloseInventory.performed += CloseInventory;
             InputManager.Input.Gameplay.OpenInventory.performed += OpenInventory;
+            OnSlotCleared.AddListener(SpawnItem);
         }
 
         private void OnDisable()
         {
             InputManager.Input.Inventory.CloseInventory.performed -= CloseInventory;
             InputManager.Input.Gameplay.OpenInventory.performed -= OpenInventory;
+            OnSlotCleared.RemoveListener(SpawnItem);
+        }
+
+        private void SpawnItem(InventoryItem item)
+        {
+            item.SpawnItem(dropTransform.position);
         }
 
         private void OpenInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
@@ -53,7 +60,7 @@ namespace Inventory
 
         private void AddItem(InventoryItem item)
         {
-            var freeSlot = inventorySlots.FirstOrDefault(x => x.CanPutItemInside && x.gameObject.activeInHierarchy);
+            var freeSlot = inventorySlots.FirstOrDefault(x => x.CanPutItemInside && x.transform.GetSiblingIndex() < slots);
 
             if (freeSlot != null)
             {
