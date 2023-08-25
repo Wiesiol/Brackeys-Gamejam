@@ -87,7 +87,7 @@ namespace Inventory
         public bool IsInventoryFull()
         {
             var freeSlots = inventorySlots.Where(x => x.CanPutItemInside && x.transform.GetSiblingIndex() < slots).Count();
-            Debug.Log(freeSlots);
+            //Debug.Log(freeSlots);
             return freeSlots == 0;
         }
     }

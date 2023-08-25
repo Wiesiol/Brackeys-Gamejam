@@ -10,7 +10,10 @@ public class PlayerSystems : MonoBehaviour
     public static Transform GatherTransform;
 
     public static PlayerInventory PlayerInventory{ get; private set; }
-    [SerializeField] private PlayerInventory playerInventory; 
+    [SerializeField] private PlayerInventory playerInventory;
+
+    public static CrosshairController CrosshairController { get; private set; }
+    [SerializeField] private CrosshairController crosshairController;
 
     private void Awake()
     {
@@ -18,5 +21,6 @@ public class PlayerSystems : MonoBehaviour
         PlayerTransform = transform;
         GatherTransform = gatherTransform;
         PlayerInventory = playerInventory;
+        CrosshairController = crosshairController;
     }
 }

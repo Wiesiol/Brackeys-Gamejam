@@ -73,6 +73,7 @@ public class ItemGathering : MonoBehaviour
                     return;
                 }
             }
+            PlayerSystems.CrosshairController.HideCrosshair();
             laser.HideLaser();
         }
         else
@@ -94,5 +95,8 @@ public class ItemGathering : MonoBehaviour
             selectedCollider = null;
             laser.HideLaser();
         }
+
+        PlayerSystems.CrosshairController.SetCrosshairPosition(collider.transform.position);
+        PlayerSystems.CrosshairController.ShowCrosshair();
     }
 }
