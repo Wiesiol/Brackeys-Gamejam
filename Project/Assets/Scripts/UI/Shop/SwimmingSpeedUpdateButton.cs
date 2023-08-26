@@ -6,11 +6,11 @@ public class SwimmingSpeedUpdateButton : AbstractShopButton
 {
     protected override void Buy()
     {
-        PlayerStats.swimmingSpeedUpdateLevel++;
+        PlayerStats.SwimmingSpeedUpdateLevel++;
     }
 
     protected override int GetUpdateLevel()
     {
-        return PlayerStats.swimmingSpeedUpdateLevel;
+        return PlayerStats.SwimmingSpeedUpdateLevel;
     }
 }

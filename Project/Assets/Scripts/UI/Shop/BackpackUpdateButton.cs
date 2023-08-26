@@ -6,11 +6,11 @@ public class BackpackUpdateButton : AbstractShopButton
 {
     protected override void Buy()
     {
-        PlayerStats.backpackUpdateLevel++;
+        PlayerStats.BackpackUpdateLevel++;
     }
 
     protected override int GetUpdateLevel()
     {
-        return PlayerStats.backpackUpdateLevel;
+        return PlayerStats.BackpackUpdateLevel;
     }
 }

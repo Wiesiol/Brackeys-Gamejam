@@ -26,6 +26,7 @@ namespace Inventory
             InputManager.Input.Gameplay.OpenInventory.performed += OpenInventory;
             OnItemAdded.AddListener(AddItem);
             OnSlotCleared.AddListener(SpawnItem);
+            //ShopTrigger.OnShopOpen.AddListener(OpenInventory);
         }
 
         private void OnDisable()
@@ -34,6 +35,7 @@ namespace Inventory
             InputManager.Input.Gameplay.OpenInventory.performed -= OpenInventory;
             OnItemAdded.RemoveListener(AddItem);
             OnSlotCleared.RemoveListener(SpawnItem);
+            //ShopTrigger.OnShopOpen.RemoveListener(OpenInventory);
         }
 
         private void SpawnItem(InventoryItem item)
@@ -41,17 +43,27 @@ namespace Inventory
             item.SpawnItem(dropTransform.position);
         }
 
-        private void OpenInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        public void OpenInventory()
         {
             InputManager.ChangeActionMap(ActionMaps.Inventory);
             inventoryHolder.SetActive(true);
             ShowPropperSlotsCount();
         }
 
-        private void CloseInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        private void OpenInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            OpenInventory();
+        }
+
+        public void CloseInventory()
         {
             InputManager.ChangeActionMap(ActionMaps.Gameplay);
             inventoryHolder.SetActive(false);
+        }
+
+        private void CloseInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            CloseInventory();
         }
 
         [ContextMenu("Add Item")]

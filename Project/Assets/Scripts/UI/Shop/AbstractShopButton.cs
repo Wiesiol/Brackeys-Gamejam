@@ -12,7 +12,7 @@ public abstract class AbstractShopButton : MonoBehaviour
     [SerializeField] private int maxUpdateLevel;
     [SerializeField] private TextMeshProUGUI costText;
     private Button button;
-    static UnityEvent OnButtonsForceRefresh = new();
+    public static UnityEvent OnButtonsForceRefresh = new();
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public abstract class AbstractShopButton : MonoBehaviour
 
     private bool CanAfford()
     {
-        return PlayerStats.money >= cost;
+        return PlayerStats.Money >= cost;
     }
 
     private bool CanUpgrade()
@@ -44,10 +44,9 @@ public abstract class AbstractShopButton : MonoBehaviour
 
     private void OnClick()
     {
-        PlayerStats.money -= cost;
+        PlayerStats.Money -= cost;
         Buy();
         OnButtonsForceRefresh.Invoke();
-        Debug.Log(PlayerStats.money);
     }
 
     private void UpdateButton()

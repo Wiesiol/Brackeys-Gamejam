@@ -6,11 +6,11 @@ public class MiningSpeedUpdateButton : AbstractShopButton
 {
     protected override void Buy()
     {
-        PlayerStats.miningSpeedUpdateLevel++;
+        PlayerStats.MiningSpeedUpdateLevel++;
     }
 
     protected override int GetUpdateLevel()
     {
-        return PlayerStats.miningSpeedUpdateLevel;
+        return PlayerStats.MiningSpeedUpdateLevel;
     }
 }

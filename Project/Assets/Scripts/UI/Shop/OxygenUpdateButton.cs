@@ -6,11 +6,11 @@ public class OxygenUpdateButton : AbstractShopButton
 {
     protected override void Buy()
     {
-        PlayerStats.oxygenUpdateLevel++;
+        PlayerStats.OxygenUpdateLevel++;
     }
 
     protected override int GetUpdateLevel()
     {
-        return PlayerStats.oxygenUpdateLevel;
+        return PlayerStats.OxygenUpdateLevel;
     }
 }

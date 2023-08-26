@@ -17,7 +17,7 @@ namespace Inventory
 
         internal void Sell()
         {
-            PlayerStats.money += Price;
+            PlayerStats.Money += Price;
         }
     }
 }
