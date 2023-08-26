@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
 
-        animator.SetFloat("moving", Mathf.MoveTowards(animator.GetFloat("moving"), Mathf.Clamp01(rb.velocity.magnitude), 0.2f));
+        animator.SetFloat("moving", speedDownCurve.Evaluate(accelerationTime));
     }
 
     private void GetInput()
