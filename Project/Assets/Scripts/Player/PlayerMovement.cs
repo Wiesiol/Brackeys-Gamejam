@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private AnimationCurve speedCurve;
     [SerializeField] private AnimationCurve speedDownCurve;
+    [SerializeField] private Animator animator;
 
     private Vector2 movementInput;
     private float ascendInput;
@@ -27,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
+
+        animator.SetFloat("moving", Mathf.MoveTowards(animator.GetFloat("moving"), Mathf.Clamp01(rb.velocity.magnitude), 0.2f));
     }
 
     private void GetInput()
