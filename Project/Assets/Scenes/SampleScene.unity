@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13007163, g: 0.33476597, b: 0.73872817, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.20124733, b: 0.45296475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -492,8 +492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d01158df0a04745a4569eb41fbaff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToGather: 5
-  drop: {fileID: 11400000, guid: a8de907bc5a8e7a4da2aae3bdd14c661, type: 2}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +522,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -582,13 +580,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 22.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,8 +1715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d01158df0a04745a4569eb41fbaff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToGather: 500
-  drop: {fileID: 0}
 --- !u!1 &1526697147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,8 +1983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d01158df0a04745a4569eb41fbaff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToGather: 5
-  drop: {fileID: 11400000, guid: 26e7c94875c07814eb1cf4f2f0960e57, type: 2}
 --- !u!1 &1730424626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,8 +2101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d01158df0a04745a4569eb41fbaff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToGather: 5
-  drop: {fileID: 11400000, guid: c6f8e33ff3eb9054f9acdbed6a99c521, type: 2}
 --- !u!1 &1767545666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,8 +2219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d01158df0a04745a4569eb41fbaff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToGather: 5
-  drop: {fileID: 11400000, guid: fa7ce5da43b3b4749a90a46fbfec2cab, type: 2}
 --- !u!1001 &1927744932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2443,7 +2433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065890224}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09140238, y: 0.000000004283588, z: -3.9317596e-10, w: 0.9958141}
+  m_LocalRotation: {x: 0.09140238, y: -0.000000004283588, z: 3.9317596e-10, w: 0.9958141}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2467,17 +2457,17 @@ PrefabInstance:
     - target: {fileID: 9104361193399647642, guid: 3f46c8904ce9b704b8221dba3801768e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.64
+      value: -0.816
       objectReference: {fileID: 0}
     - target: {fileID: 9104361193399647642, guid: 3f46c8904ce9b704b8221dba3801768e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.292
       objectReference: {fileID: 0}
     - target: {fileID: 9104361193399647642, guid: 3f46c8904ce9b704b8221dba3801768e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.96
+      value: 1.584
       objectReference: {fileID: 0}
     - target: {fileID: 9104361193399647642, guid: 3f46c8904ce9b704b8221dba3801768e,
         type: 3}
