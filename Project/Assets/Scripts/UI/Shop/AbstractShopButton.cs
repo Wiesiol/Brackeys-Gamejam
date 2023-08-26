@@ -11,6 +11,7 @@ public abstract class AbstractShopButton : MonoBehaviour
     [SerializeField] private int cost;
     [SerializeField] private int maxUpdateLevel;
     [SerializeField] private TextMeshProUGUI costText;
+    [SerializeField] private String title;
     private Button button;
     public static UnityEvent OnButtonsForceRefresh = new();
 
@@ -53,7 +54,7 @@ public abstract class AbstractShopButton : MonoBehaviour
     {
         button.interactable = CanAfford() && CanUpgrade();
         costText.color = CanAfford() && CanUpgrade() ? Color.green : Color.red;
-        costText.SetText(CanUpgrade() ? cost.ToString() : "SOLD OUT");
+        costText.SetText(title + System.Environment.NewLine + (CanUpgrade() ? cost.ToString() : "SOLD OUT"));
     }
 
     protected abstract void Buy();
