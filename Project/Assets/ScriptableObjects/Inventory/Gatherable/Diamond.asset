@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ffd69d2878ec5d4fb1470c775bf4272, type: 3}
-  m_Name: GreenRock
+  m_Name: Diamond
   m_EditorClassIdentifier: 
-  itemInstance: {fileID: 1787170775164609804, guid: 3f46c8904ce9b704b8221dba3801768e,
+  itemInstance: {fileID: 1787170775164609804, guid: 2ad782a04e29d8f44810feb2a6451db7,
     type: 3}
   <ItemSprite>k__BackingField: {fileID: 10915, guid: 0000000000000000f000000000000000,
     type: 0}
+  <Price>k__BackingField: 10

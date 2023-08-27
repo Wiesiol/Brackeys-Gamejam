@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 2011883143797151941}
   - component: {fileID: 4174861770461969391}
   - component: {fileID: 1787170775164609804}
+  - component: {fileID: 5555419815224530168}
   m_Layer: 8
-  m_Name: YellowRock
+  m_Name: Saphire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7cd034e11efa1f04ab6b2e633f05aab2, type: 2}
+  - {fileID: 2100000, guid: 99529c6ad5aa37844acc41a4b6a84614, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,4 +121,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55881ed9fec080c4a9f4fb62bd25ea4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 26e7c94875c07814eb1cf4f2f0960e57, type: 2}
+  item: {fileID: 11400000, guid: a8de907bc5a8e7a4da2aae3bdd14c661, type: 2}
+--- !u!54 &5555419815224530168
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585149979951603121}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

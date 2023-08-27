@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4174861770461969391}
   - component: {fileID: 1787170775164609804}
   m_Layer: 8
-  m_Name: RedRock
+  m_Name: Rubby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,5 @@
 using Assets.Scripts.Gameplay;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +18,7 @@ public class Shop : MonoBehaviour
         PlayerStats.OnMoneyAmountUpdate.AddListener(UpdateMoney);
         exitButton.onClick.AddListener(ExitShop);
         moneyText.SetText(PlayerStats.Money.ToString());
+        InputManager.Input.Inventory.CloseInventory.performed += ExitShops;
     }
 
     private void OnDisable()
@@ -38,6 +40,11 @@ public class Shop : MonoBehaviour
         canvas.enabled = false;
         PlayerSystems.PlayerInventory.CloseInventory();
         GameSystems.gamestate = GameState.Gameplay;
+    }
+
+    private void ExitShops(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        ExitShop();
     }
 
     private void UpdateMoney()
