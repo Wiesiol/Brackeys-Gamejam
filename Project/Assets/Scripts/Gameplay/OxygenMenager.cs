@@ -37,7 +37,7 @@ public class OxygenMenager : MonoBehaviour
         }
         if (oxygenLevel <= 0)
         {
-
+            PlayerDeath.KillPlayer();
         }
     }
 
