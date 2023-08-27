@@ -16,6 +16,7 @@ namespace Inventory
                 if (!PlayerSystems.PlayerInventory.IsInventoryFull())
                 {
                     PlayerInventory.OnItemAdded.Invoke(item);
+                    SoundManager.Instance.PlayRandomSoundOfType(SoundType.collectSounds);
                     Destroy(gameObject);
                 }
             } 

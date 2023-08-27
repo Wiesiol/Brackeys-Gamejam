@@ -33,6 +33,7 @@ public class Shop : MonoBehaviour
         GameSystems.gamestate = GameState.Shop;
         canvas.enabled = true;
         PlayerSystems.PlayerInventory.OpenInventory();
+        SoundManager.Instance.PlaySound(SoundManager.Instance.EnterShop);
     }
 
     private void ExitShop()
@@ -40,6 +41,7 @@ public class Shop : MonoBehaviour
         canvas.enabled = false;
         PlayerSystems.PlayerInventory.CloseInventory();
         GameSystems.gamestate = GameState.Gameplay;
+        SoundManager.Instance.PlaySound(SoundManager.Instance.EnterShop);
     }
 
     private void ExitShops(UnityEngine.InputSystem.InputAction.CallbackContext obj)

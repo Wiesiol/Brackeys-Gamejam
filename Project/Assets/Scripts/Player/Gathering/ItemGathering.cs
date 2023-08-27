@@ -75,6 +75,7 @@ public class ItemGathering : MonoBehaviour
             }
             PlayerSystems.CrosshairController.HideCrosshair();
             laser.HideLaser();
+            SoundManager.Instance.StopLaser();
         }
         else
         {
@@ -86,6 +87,7 @@ public class ItemGathering : MonoBehaviour
     {
         if (InputManager.Input.Gameplay.Gather.IsPressed())
         {
+            SoundManager.Instance.PlayLaser();
             selectedCollider = collider;
             laser.DrawLaser(collider);
             collider.GetComponent<IGatherable>().Gather();
@@ -94,6 +96,7 @@ public class ItemGathering : MonoBehaviour
         {
             selectedCollider = null;
             laser.HideLaser();
+            SoundManager.Instance.StopLaser();
         }
 
         PlayerSystems.CrosshairController.SetCrosshairPosition(collider.transform.position);

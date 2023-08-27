@@ -27,11 +27,13 @@ namespace Inventory
             {
                 if (GameSystems.gamestate == GameState.Shop)
                 {
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.SellItem);
                     inventoryItem.Sell();
                 }
 
                 else if (GameSystems.gamestate == GameState.Gameplay)
                 {
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.DiscardItem);
                     PlayerInventory.OnSlotCleared.Invoke(inventoryItem);
                 }
 

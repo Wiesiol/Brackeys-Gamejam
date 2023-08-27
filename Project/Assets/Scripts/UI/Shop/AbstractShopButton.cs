@@ -47,6 +47,7 @@ public abstract class AbstractShopButton : MonoBehaviour
     {
         PlayerStats.Money -= cost;
         Buy();
+        SoundManager.Instance.PlaySound(SoundManager.Instance.SellItem);
         OnButtonsForceRefresh.Invoke();
     }
 
