@@ -879,8 +879,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.35389975, y: -0.000000045304954, z: -0.000000017142838,
-    w: 0.9352834}
+  m_LocalRotation: {x: -0.35389975, y: 0.00000004551744, z: 0.000000017223238, w: 0.9352834}
   m_LocalPosition: {x: -22.06, y: -2.6146386, z: -19.951237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1246,7 +1245,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382061275}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.31969208, y: 0.000000028238341, z: 0.000000009527566, w: 0.9475215}
+  m_LocalRotation: {x: -0.31969208, y: -0.000000028238341, z: -0.000000009527566,
+    w: 0.9475215}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4327,23 +4327,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This is the store area. You can breathe here, so come back here when you
-    run out of oxygen.
+  m_text: 'You can breathe when You enter the shop, so come back here when you run
+    out of oxygen.
 
-    In addition, you can sell raw materials here and buy
-    new equipment.
+    In addition, you can sell  materials here and buy new equipment.
 
 
-    WASD - movement
+    WASD
+    - movement
 
     I - equipment
 
     ctrl - descending
 
-    space
-    - ascending
+    space - ascending
 
-    lmb - gathering'
+    lmb
+    - gathering'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8063,8 +8063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065890224}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.35389975, y: -0.000000022330727, z: -0.000000008449674,
-    w: 0.93528336}
+  m_LocalRotation: {x: -0.35389975, y: 0.00000002275872, z: 0.00000000861162, w: 0.93528336}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

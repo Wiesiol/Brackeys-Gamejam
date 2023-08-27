@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Inventory
 {
@@ -59,6 +60,7 @@ namespace Inventory
         {
             InputManager.ChangeActionMap(ActionMaps.Gameplay);
             inventoryHolder.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
         private void CloseInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)

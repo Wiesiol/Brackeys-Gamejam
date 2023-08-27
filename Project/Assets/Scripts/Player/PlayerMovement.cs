@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AnimationCurve speedCurve;
     [SerializeField] private AnimationCurve speedDownCurve;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject fins;
 
     private Vector2 movementInput;
     private float ascendInput;
@@ -23,12 +25,32 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb.useGravity = false;
+
+        SceneManager.LoadScene("ShopScene", LoadSceneMode.Additive);
+    }
+
+    private void OnEnable()
+    {
+        PlayerStats.OnSwimmingSpeedLevelUpdate.AddListener(UpdateSpeed);
+    }
+
+    private void OnDisable()
+    {
+        PlayerStats.OnSwimmingSpeedLevelUpdate.RemoveListener(UpdateSpeed);
+    }
+
+    private void UpdateSpeed()
+    {
+        fins.SetActive(true);
+        speed = 500;
+
     }
 
     void Update()
     {
         GetInput();
 
+        Debug.Log(accelerationTime);
         animator.SetFloat("moving", speedDownCurve.Evaluate(accelerationTime));
     }
 

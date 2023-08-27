@@ -75,7 +75,8 @@ public class ItemGathering : MonoBehaviour
             }
             PlayerSystems.CrosshairController.HideCrosshair();
             laser.HideLaser();
-            SoundManager.Instance.StopLaser();
+            if(SoundManager.Instance != null)
+                SoundManager.Instance.StopLaser();
         }
         else
         {
