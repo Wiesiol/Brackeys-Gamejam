@@ -102,5 +102,10 @@ namespace Inventory
             //Debug.Log(freeSlots);
             return freeSlots == 0;
         }
+
+        public void EmptyInventory()
+        {
+            inventorySlots.Clear();
+        }
     }
 }

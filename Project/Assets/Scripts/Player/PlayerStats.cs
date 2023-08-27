@@ -54,7 +54,7 @@ public static class PlayerStats
     }
 
     public static UnityEvent OnMoneyAmountUpdate = new();
-    private static int money = 30;
+    private static int money = 0;
     public static int Money
     {
         get => money;

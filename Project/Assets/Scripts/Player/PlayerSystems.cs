@@ -15,6 +15,9 @@ public class PlayerSystems : MonoBehaviour
     public static CrosshairController CrosshairController { get; private set; }
     [SerializeField] private CrosshairController crosshairController;
 
+    public static OxygenMenager OxygenMenager { get; private set; }
+    [SerializeField] private OxygenMenager oxygenMenager;
+
     private void Awake()
     {
         Player = gameObject;
@@ -22,5 +25,6 @@ public class PlayerSystems : MonoBehaviour
         GatherTransform = gatherTransform;
         PlayerInventory = playerInventory;
         CrosshairController = crosshairController;
+        OxygenMenager = oxygenMenager;
     }
 }
