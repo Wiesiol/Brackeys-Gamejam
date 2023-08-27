@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [field: SerializeField] public AudioClip JumpIntoWater { get; private set; }
+    [field: SerializeField] public AudioClip Die { get; private set; }
     [field: SerializeField] public AudioClip SellItem { get; private set; }
     [field: SerializeField] public AudioClip DiscardItem { get; private set; }
     [field: SerializeField] public AudioClip EnterShop { get; private set; }

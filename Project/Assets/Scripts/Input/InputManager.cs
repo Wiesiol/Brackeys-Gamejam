@@ -3,7 +3,7 @@ public static class InputManager
     static InputManager()
     {
         //Input.Gameplay.Enable();
-        ChangeActionMap(ActionMaps.Gameplay);
+        //ChangeActionMap(ActionMaps.Gameplay);
     }
 
     private static PlayerInput input;

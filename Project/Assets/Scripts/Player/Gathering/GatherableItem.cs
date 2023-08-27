@@ -14,7 +14,7 @@ public class GatherableItem : MonoBehaviour, IGatherable
         if (timeToGather > 0)
         {
             timeToGather -= Time.deltaTime;
-            playSoundInterval -= Time.deltaTime;
+            playSoundInterval -= Time.deltaTime * (PlayerStats.MiningSpeedUpdateLevel + 1);
 
             if (playSoundInterval < 0)
             {

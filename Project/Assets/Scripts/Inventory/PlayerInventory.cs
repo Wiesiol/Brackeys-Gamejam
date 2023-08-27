@@ -27,7 +27,13 @@ namespace Inventory
             InputManager.Input.Gameplay.OpenInventory.performed += OpenInventory;
             OnItemAdded.AddListener(AddItem);
             OnSlotCleared.AddListener(SpawnItem);
+            PlayerStats.OnBackpackLevelUpdate.AddListener(ResizeBackpack);
             //ShopTrigger.OnShopOpen.AddListener(OpenInventory);
+        }
+
+        private void ResizeBackpack()
+        {
+            slots = 15;
         }
 
         private void OnDisable()
@@ -36,6 +42,7 @@ namespace Inventory
             InputManager.Input.Gameplay.OpenInventory.performed -= OpenInventory;
             OnItemAdded.RemoveListener(AddItem);
             OnSlotCleared.RemoveListener(SpawnItem);
+            PlayerStats.OnBackpackLevelUpdate.RemoveListener(ResizeBackpack);
             //ShopTrigger.OnShopOpen.RemoveListener(OpenInventory);
         }
 

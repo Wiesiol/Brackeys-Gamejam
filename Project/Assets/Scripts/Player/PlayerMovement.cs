@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AnimationCurve speedDownCurve;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject fins;
+    [SerializeField] private GameObject scubaSet;
 
     private Vector2 movementInput;
     private float ascendInput;
@@ -25,33 +26,38 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb.useGravity = false;
-
-        SceneManager.LoadScene("ShopScene", LoadSceneMode.Additive);
+        InputManager.ChangeActionMap(ActionMaps.Gameplay);
     }
 
     private void OnEnable()
     {
         PlayerStats.OnSwimmingSpeedLevelUpdate.AddListener(UpdateSpeed);
+        PlayerStats.OnOxygenLevelUpdate.AddListener(GetScuba);
+    }
+
+    private void GetScuba()
+    {
+        scubaSet.SetActive(true);
     }
 
     private void OnDisable()
     {
         PlayerStats.OnSwimmingSpeedLevelUpdate.RemoveListener(UpdateSpeed);
+        PlayerStats.OnOxygenLevelUpdate.RemoveListener(GetScuba);
     }
 
     private void UpdateSpeed()
     {
         fins.SetActive(true);
         speed = 500;
-
     }
 
     void Update()
     {
         GetInput();
 
-        Debug.Log(accelerationTime);
-        animator.SetFloat("moving", speedDownCurve.Evaluate(accelerationTime));
+        //Debug.Log(accelerationTime);
+        animator.SetFloat("MovingForward", speedDownCurve.Evaluate(accelerationTime));
     }
 
     private void GetInput()
