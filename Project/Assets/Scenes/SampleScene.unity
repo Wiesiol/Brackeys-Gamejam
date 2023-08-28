@@ -1148,8 +1148,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382061275}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.127515, y: 0.000000012243756, z: -0.0000000015741134, w: 0.99183667}
-  m_LocalPosition: {x: 0, y: -0.00000023841858, z: 0}
+  m_LocalRotation: {x: 0.12751494, y: 1e-45, z: -0, w: 0.99183667}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2378,7 +2378,6 @@ GameObject:
   - component: {fileID: 711226275}
   - component: {fileID: 711226274}
   - component: {fileID: 711226273}
-  - component: {fileID: 711226272}
   - component: {fileID: 711226271}
   - component: {fileID: 711226270}
   m_Layer: 5
@@ -2415,23 +2414,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenLevel: 0
---- !u!114 &711226272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711226269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &711226273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3327,7 +3309,6 @@ GameObject:
   - component: {fileID: 927694881}
   - component: {fileID: 927694880}
   - component: {fileID: 927694879}
-  - component: {fileID: 927694878}
   m_Layer: 5
   m_Name: HintCanvas
   m_TagString: Untagged
@@ -3335,23 +3316,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &927694878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927694877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &927694879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3374,7 +3338,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &927694880
 Canvas:
   m_ObjectHideFlags: 0
@@ -5070,7 +5034,6 @@ GameObject:
   - component: {fileID: 1350626774}
   - component: {fileID: 1350626773}
   - component: {fileID: 1350626772}
-  - component: {fileID: 1350626771}
   - component: {fileID: 1350626775}
   m_Layer: 5
   m_Name: CrosshairCanvas
@@ -5079,23 +5042,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1350626771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350626770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1350626772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7899,8 +7845,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065890224}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09140238, y: 2.7534822e-15, z: -6.652597e-16, w: 0.9958141}
-  m_LocalPosition: {x: 0, y: -0.00000023841858, z: 0}
+  m_LocalRotation: {x: 0.09140238, y: -0.00000000428359, z: 3.9317613e-10, w: 0.9958141}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8397,10 +8343,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 26e7c94875c07814eb1cf4f2f0960e57,
         type: 2}
+    - target: {fileID: 4255204718009653227, guid: 1a8964fb9a31715409d95ded6335d5dd,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4945422756769413080, guid: 1a8964fb9a31715409d95ded6335d5dd,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: InventoryCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129447857881697162, guid: 1a8964fb9a31715409d95ded6335d5dd,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryPanel
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1755168917714045790, guid: 1a8964fb9a31715409d95ded6335d5dd, type: 3}
