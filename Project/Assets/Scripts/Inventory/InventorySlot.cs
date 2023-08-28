@@ -13,15 +13,15 @@ namespace Inventory
 
         private void OnEnable()
         {
-            button.onClick.AddListener(DropItem);
+            button.onClick.AddListener(AbandonItem);
         }
 
         private void OnDisable()
         {
-            button.onClick.RemoveListener(DropItem);
+            button.onClick.RemoveListener(AbandonItem);
         }
 
-        private void DropItem()
+        public void AbandonItem()
         {
             if (inventoryItem != null)
             {

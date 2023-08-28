@@ -114,7 +114,10 @@ namespace Inventory
 
         public void EmptyInventory()
         {
-            inventorySlots.Clear();
+            foreach (var slot in inventorySlots)
+            {
+                slot.AbandonItem();
+            }
         }
     }
 }

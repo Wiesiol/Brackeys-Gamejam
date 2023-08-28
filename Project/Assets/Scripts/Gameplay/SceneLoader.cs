@@ -5,6 +5,7 @@ namespace Assets.Scripts.Gameplay
 {
     public class SceneLoader : MonoBehaviour
     {
+        [SerializeField] private bool loadMainMenu;
         private static SceneLoader instance;
         public static SceneLoader Instance
         {
@@ -20,7 +21,10 @@ namespace Assets.Scripts.Gameplay
 
         private void Awake()
         {
-            SceneManager.LoadScene("MenuScene", LoadSceneMode.Additive);
+#if UNITY_EDITOR
+            if(loadMainMenu)
+#endif
+                SceneManager.LoadScene("MenuScene", LoadSceneMode.Additive);
         }
 
         public void LoadGameplay()
