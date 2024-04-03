@@ -104,7 +104,6 @@ namespace Inventory
             }
         }
 
-        [ContextMenu("xD")]
         public bool IsInventoryFull()
         {
             var freeSlots = inventorySlots.Where(x => x.CanPutItemInside && x.transform.GetSiblingIndex() < slots).Count();
